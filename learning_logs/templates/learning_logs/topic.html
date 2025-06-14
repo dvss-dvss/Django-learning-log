@@ -1,0 +1,17 @@
+{% extends "learning_logs/base.html" %}
+
+{% block content %}
+  <h2>Тема: {{ topic }}</h2>
+
+  <h3>Дописи:</h3>
+  <ul>
+    {% for entry in entries %}
+      <li>
+        <p>{{ entry.date_added|date:"d.m.Y H:i" }}</p>
+        <p>{{ entry.text|linebreaks }}</p>
+      </li>
+    {% empty %}
+      <li>До теми ще не додано дописів.</li>
+    {% endfor %}
+  </ul>
+{% endblock content %}

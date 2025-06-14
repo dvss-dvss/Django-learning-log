@@ -8,4 +8,6 @@ urlpatterns = [
     path('', views.index, name='index'),
     # Сторінка зі списком усіх тем
     path('topics/', views.topics, name='topics'),
+    # Сторінка з информацією за окремою темою
+    path('topics/<int:topic_id>/', views.topic, name='topic'),
 ]
