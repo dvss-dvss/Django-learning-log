@@ -4,6 +4,10 @@
   <h2>Тема: {{ topic }}</h2>
 
   <h3>Дописи:</h3>
+  <p>
+    <a href="{% url 'learning_logs:new_entry' topic.id %}">Додати новий допис</a>
+  </p>  
+  
   <ul>
     {% for entry in entries %}
       <li>
