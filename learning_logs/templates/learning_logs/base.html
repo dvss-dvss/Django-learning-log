@@ -7,15 +7,20 @@
 </head>
 <body>
   <h1>
-    <a href="{% url 'learning_logs:index' %}">Журнал навчання</a>
-    <a href="{% url 'learning_logs:topics' %}">Теми</a>
+    <a href="{% url 'learning_logs:index' %}">Журнал навчання</a> |
+    <a href="{% url 'learning_logs:topics' %}">Теми</a> |
     {% if user.is_authenticated %}
-      {{ user.username }} 
+      {{ user.username }}
     {% else %}
-      <a href="{% url 'accounts:login' %}">Вхід</a>
+      <a href="{% url 'accounts:login' %}">Вхід</a> |
+      <a href="{% url 'accounts:register' %}">Реєстрація</a>
     {% endif %}
+  </h1>
+  {% block content %}{% endblock content %}
+
+  {% if user.is_authenticated %}
     <hr>
-    <form action="{% url 'accounts:logout' %}" method="post">Add commentMore actions
+    <form action="{% url 'accounts:logout' %}" method="post">
       {% csrf_token %}
       <button type="submit">Вихід</button>
     </form>
