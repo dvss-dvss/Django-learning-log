@@ -1,3 +1,4 @@
+from django.contrib.auth.models import User
 from django.db import models
 
 # Create your models here.
@@ -7,6 +8,7 @@ class Topic(models.Model):
 
     text = models.CharField(max_length=255, verbose_name='Назва теми')
     date_added = models.DateTimeField(auto_now_add=True, verbose_name='Створено')
+    owner = models.ForeignKey(User, on_delete=models.CASCADE, null = True, verbose_name="Власник")
 
     class Meta:
         verbose_name = 'Тема'
