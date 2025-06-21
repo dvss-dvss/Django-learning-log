@@ -1,4 +1,5 @@
 from django.shortcuts import redirect, render
+from django.contrib.auth.decorators import login_required
 
 from .models import Topic
 from .models import Entry
@@ -11,6 +12,7 @@ def index(request):
     """Головна сторінка застосунку"""
     return render(request, 'learning_logs/index.html')
 
+@login_required
 def topics(request):
     """Виводе список тем"""
     topics = Topic.objects.order_by('date_added')
