@@ -9,6 +9,11 @@
   <h1>
     <a href="{% url 'learning_logs:index' %}">Журнал навчання</a>
     <a href="{% url 'learning_logs:topics' %}">Теми</a>
+    {% if user.is_authenticated %}
+      {{ user.username }} 
+    {% else %}
+      <a href="{% url 'accounts:login' %}">Вхід</a>
+    {% endif %}
   </h1>
   {% block content %}{% endblock content %}
 </body>

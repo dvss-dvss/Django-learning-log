@@ -1,0 +1,15 @@
+{% extends "learning_logs/base.html" %}
+
+{% block content %}
+
+  {% if form.errors %}
+    <p> Ваш логін чи пароль не вірні. Будь ласка, спробуйте ще раз.</p>
+  {% endif %}
+
+  <form action="{% url 'login' %}" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Вхід</button>
+  </form>
+
+{% endblock content %}
